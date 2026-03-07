@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
+  <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
+
+  <link rel="stylesheet" href="./style.css">
 
   <!-- daisyUI and tailwindcss  -->
    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
@@ -50,11 +53,11 @@
  <section class="w-11/12 mx-auto shadow-md rounded-sm mt-10">
 
   <div class="p-5">
-  <button class="btn">All</button>
+  <button id="all-btn" class="btn active">All</button>
 
-  <button class="btn">Open</button>
+  <button id="open-btn" class="btn">Open</button>
 
-  <button class="btn">Closed</button>
+  <button id="closed-btn" class="btn">Closed</button>
   </div>
 
  </section>
@@ -64,21 +67,32 @@
     <div class="left-section flex">
       <div class=" mt-3"><img src="./assets/Aperture.png" alt=""></div>
       <div class="pl-3">
-        <h1 class="text-xl font-bold"><span>0</span><span> Issues</span></h1>
+        <h1 class="text-xl font-bold"><span id="total-issues">0</span><span> Issues</span></h1>
         <p>Track and manage your project issues</p>
       </div>
     </div>
 
     <div class="right-section flex gap-2">
-      <h1><span class="text-green-500"><i class="fa-solid fa-circle"></i></span>Open</h1>
-      <h1><span class="text-purple-500"><i class="fa-solid fa-circle"></i></span>Closed</h1>
+      <h1><span class="text-green-600"><i class="fa-solid fa-circle"></i></span>Open</h1>
+      <h1><span class="text-purple-600"><i class="fa-solid fa-circle"></i></span>Closed</h1>
     </div>
   </div>
 
   <!-- card container  -->
 
-  <div id="cardContainer" class="grid grid-cols-4 bg-base-300 p-5">
+  <div  class=" bg-base-300 ">
+   <!-- loading  -->
+  <section id="loading" class="flex justify-center items-center py-10 ">
+     <span class="loading loading-infinity loading-xl"></span>
 
+  </section>
+ <div id="card-container" class="grid grid-cols-4 gap-5 p-5">
+
+ </div>
+     
+
+
+<!--  
     <div class=" shadow-sm rounded-[10px]  bg-white">
       <div class="flex justify-between p-3">
         <div><img src="./assets/Open-Status.png" alt=""></div>
@@ -99,7 +113,7 @@
           <h1>hello</h1>
           <p>Date</p>
       </div>
-    </div>
+    </div>  -->
 
   </div>
  </main>
