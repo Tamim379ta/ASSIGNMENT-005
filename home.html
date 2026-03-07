@@ -19,33 +19,19 @@
 
 
  <header>
-  <div class="navbar bg-base-100 shadow-sm">
+  <div class="flex flex-col gap-4  md:flex-row justify-between py-5 bg-base-100 shadow-sm">
   <div class="flex-1">
     <a class="btn btn-ghost text-xl">
       <div class="w-10"><img src="./assets/github-logo.png" alt=""></div>
       <h1 class="">GitHub Issues Tracker</h1>
     </a>
   </div>
-  <div class="flex gap-2">
+  <div class="flex pl-10 md:pl-0 gap-2">
     <input id="input-box" type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
     <button id="search-btn" class="btn btn-primary">Search</button>
-    <div class="dropdown dropdown-end">
-        <div>
-          <button class="btn btn-primary"><span><i class="fa-solid fa-plus"></i></span> New Issue</button>
-        </div>
-      <ul
-        tabindex="-1"
-        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li>
-          <a class="justify-between">
-            Profile
-            <span class="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
-      </ul>
-    </div>
+    <div>
+      <button class="btn btn-primary"><span><i class="fa-solid fa-plus"></i></span> New Issue</button>
+   </div>
   </div>
 </div>
  </header>
@@ -64,7 +50,7 @@
  </section>
 
  <main class="w-11/12 mx-auto mt-5 pb-20">
-  <div class="flex justify-between p-5 shadow-md ">
+  <div class="flex flex-col gap-4 md:flex-row justify-between p-5 shadow-md ">
     <div class="left-section flex">
       <div class=" mt-3"><img src="./assets/Aperture.png" alt=""></div>
       <div class="pl-3">
