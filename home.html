@@ -53,11 +53,11 @@
  <section class="w-11/12 mx-auto shadow-md rounded-sm mt-10">
 
   <div class="p-5">
-  <button id="all-btn" class="btn active">All</button>
+  <button onclick="loadData()" id="all-btn" class="btn active">All</button>
 
-  <button id="open-btn" class="btn">Open</button>
+  <button onclick="loadOpenData()" id="open-btn" class="btn">Open</button>
 
-  <button id="closed-btn" class="btn">Closed</button>
+  <button onclick="loadClosedData()" id="closed-btn" class="btn">Closed</button>
   </div>
 
  </section>
@@ -83,12 +83,21 @@
   <div  class=" bg-base-300 ">
    <!-- loading  -->
   <section id="loading" class="flex justify-center items-center py-10 ">
-     <span class="loading loading-infinity loading-xl"></span>
+    <span class="loading loading-infinity loading-xl"></span>
 
-  </section>
+  </section> 
+
+
  <div id="card-container" class="grid grid-cols-4 gap-5 p-5">
 
  </div>
+
+
+  <div id="open-card-container" class="grid grid-cols-4 gap-5 p-5">
+
+ </div>
+
+
      
 
 
@@ -120,8 +129,7 @@
 
  <!-- modal  -->
 
- <!-- Open the modal using ID.showModal() method -->
-<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button>  -->
+
 <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box">
     <div id="modal-area" >
