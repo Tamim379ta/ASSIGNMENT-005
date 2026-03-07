@@ -8,6 +8,15 @@ const loadData = async() => {
   // console.log(data.data) 
   displayData(data.data)
 
+  const allBtn = document.getElementById("all-btn")
+  const openBtn = document.getElementById("open-btn")
+  const closedBtn = document.getElementById("closed-btn")
+
+  
+  allBtn.classList.add("active")
+  openBtn.classList.remove("active")
+  closedBtn.classList.remove("active")
+
   let totalIssues = document.getElementById("total-issues");
   totalIssues.innerText = data.data.length;
 
@@ -15,18 +24,18 @@ const loadData = async() => {
 
 const displayData = (cards) => {
   const cardContainer = document.getElementById("card-container")
-  // cardContainer.innerHTML = ""; 
+  cardContainer.innerHTML = ""; 
 
   cards.forEach(card => {
     const eachCard = document.createElement("div");
     eachCard.innerHTML = `
-   <div class=" h-70 shadow-sm rounded-[10px]  ${ card.status == "open"? "border-t-4 border-green-600" : "border-t-4 border-purple-600" }  bg-white">
+   <div onclick = "loadModal(${card.id})" class=" h-70 shadow-sm rounded-[10px]  ${ card.status == "open"? "border-t-4 border-green-600" : "border-t-4 border-purple-600" }  bg-white">
       <div class="flex justify-between p-3">
         <div><img src="${card.status == "open" ? "./assets/Open-Status.png" : "./assets/Closed- Status .png"}" alt=""></div>
         <div class="badge badge-outline badge-secondary">${card.priority}</div>
       </div>
       <div class="space-y-2 px-3">
-        <h1 onclick = "loadModal(${card.id})" class="font-bold">${card.title}</h1>
+        <h1 class="font-bold">${card.title}</h1>
         <p class="line-clamp-2">${card.description}</p>
 
         <div class="flex gap-2 py-2">
@@ -37,9 +46,9 @@ const displayData = (cards) => {
       </div>
       <hr class="text-gray-300">
       <div class="space-y-2 p-3">
-          <h1>${card.createdAt}</h1>
+          <h1><span># ${card.id} by</span> ${card.author}</h1>
           <p>${card.updatedAt}</p>
-      </div>
+      </div> 
     </div>
   
   `
@@ -115,11 +124,20 @@ const displayModal = (data) => {
 
 
 const loadOpenData = async() => {
-    manageLoading(true)
+  manageLoading(true)
   const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
 
   const response = await fetch(url)
   const data = await response.json();
+
+  const allBtn = document.getElementById("all-btn")
+  const openBtn = document.getElementById("open-btn")
+  const closedBtn = document.getElementById("closed-btn")
+
+  
+  allBtn.classList.remove("active")
+  openBtn.classList.add("active")
+  closedBtn.classList.remove("active")
 
   // console.log(data.data)  
   displayOpenData(data.data)
@@ -136,13 +154,13 @@ const displayOpenData = (cards) => {
   openCard.forEach(card => {
     const eachCard = document.createElement("div");
     eachCard.innerHTML = `
-   <div class=" h-70 shadow-sm rounded-[10px]  ${ card.status == "open"? "border-t-4 border-green-600" : "border-t-4 border-purple-600" }  bg-white">
+   <div onclick = "loadModal(${card.id})" class=" h-70 shadow-sm rounded-[10px]  ${ card.status == "open"? "border-t-4 border-green-600" : "border-t-4 border-purple-600" }  bg-white">
       <div class="flex justify-between p-3">
         <div><img src="${card.status == "open" ? "./assets/Open-Status.png" : "./assets/Closed- Status .png"}" alt=""></div>
         <div class="badge badge-outline badge-secondary">${card.priority}</div>
       </div>
       <div class="space-y-2 px-3">
-        <h1 onclick = "loadModal(${card.id})" class="font-bold">${card.title}</h1>
+        <h1  class="font-bold">${card.title}</h1>
         <p class="line-clamp-2">${card.description}</p>
 
         <div class="flex gap-2 py-2">
@@ -153,7 +171,7 @@ const displayOpenData = (cards) => {
       </div>
       <hr class="text-gray-300">
       <div class="space-y-2 p-3">
-          <h1>${card.createdAt}</h1>
+          <h1><span># ${card.id} by</span> ${card.author}</h1>
           <p>${card.updatedAt}</p>
       </div>
     </div>
@@ -170,14 +188,24 @@ const displayOpenData = (cards) => {
 
 
 const loadClosedData = async() => {
-    manageLoading(true)
+  manageLoading(true)
   const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
-
   const response = await fetch(url)
   const data = await response.json();
 
+  const allBtn = document.getElementById("all-btn")
+  const openBtn = document.getElementById("open-btn")
+  const closedBtn = document.getElementById("closed-btn")
+
+  
+  allBtn.classList.remove("active")
+  openBtn.classList.remove("active")
+  closedBtn.classList.add("active")
+
   // console.log(data.data)  
   displayClosedData(data.data)
+
+
 
 }
 
@@ -191,13 +219,13 @@ const displayClosedData = (cards) => {
   openCard.forEach(card => {
     const eachCard = document.createElement("div");
     eachCard.innerHTML = `
-   <div class=" h-70 shadow-sm rounded-[10px]  ${ card.status == "open"? "border-t-4 border-green-600" : "border-t-4 border-purple-600" }  bg-white">
+   <div onclick = "loadModal(${card.id})" class=" h-70 shadow-sm rounded-[10px]  ${ card.status == "open"? "border-t-4 border-green-600" : "border-t-4 border-purple-600" }  bg-white">
       <div class="flex justify-between p-3">
         <div><img src="${card.status == "open" ? "./assets/Open-Status.png" : "./assets/Closed- Status .png"}" alt=""></div>
         <div class="badge badge-outline badge-secondary">${card.priority}</div>
       </div>
       <div class="space-y-2 px-3">
-        <h1 onclick = "loadModal(${card.id})" class="font-bold">${card.title}</h1>
+        <h1 class="font-bold">${card.title}</h1>
         <p class="line-clamp-2">${card.description}</p>
 
         <div class="flex gap-2 py-2">
@@ -208,7 +236,7 @@ const displayClosedData = (cards) => {
       </div>
       <hr class="text-gray-300">
       <div class="space-y-2 p-3">
-          <h1>${card.createdAt}</h1>
+          <h1><span># ${card.id} by</span> ${card.author}</h1>
           <p>${card.updatedAt}</p>
       </div>
     </div>
@@ -224,5 +252,20 @@ const displayClosedData = (cards) => {
 }
 
 
-
 loadData()
+
+document.getElementById("search-btn").addEventListener("click" , async() =>{
+  const input = document.getElementById("input-box");
+
+  const inputValue = input.value.trim().toLowerCase() ;
+
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${inputValue}`
+  const response = await fetch(url)
+  const data = await response.json()
+  displayData(data.data)
+
+
+  // console.log(data) 
+
+
+})
